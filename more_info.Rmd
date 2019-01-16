@@ -1,0 +1,100 @@
+---
+title: "More Information"
+author: "Group 4: Ratie Vushe and Jinghan Gao"
+date: "Last updated on `r Sys.Date()`"
+output: 
+  html_document:
+    highlight: tango
+    theme: cerulean
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: false
+    df_print: kable
+---   
+<style>
+body {
+text-align: justify}
+</style>
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Set R Markdown chunk defaults:
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE, 
+  fig.width = 16/2, fig.height = 9/2
+)
+```
+
+
+```{r}
+# Load all necessary packages here. It's a good idea to load all packages at 
+# the beginning of a Rmd file so that collaborators can see in one shot all
+# packages they'll need to ensure are installed beforehand:
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(USAboundaries)
+library(leaflet)
+library(maps)
+library(sf)
+
+
+```
+# Types of Abuse Across States
+We eliminated Denial of Critical care from our observations and created an interactive map to show the second most prevalent types of abuse in each county. We also used a dataset with Iowa county population and joined it together with the Abuse dataset. The representation above shows the results with color of each circle showing the types of abuse and the radius showing average occurrence according to population. Hovering over each point shows us what county each type of abuse occurs in with the pop up being the county name.
+```{r}
+#Plot interactive map of the two most popular abusee types per county with size representing ratio
+#Hovering over the plot allows you to see the service areas in which these types of abuse are happening
+
+pal <- colorFactor(c("blue", "red", "green","yellow", "black"), population2$Abuse.Type )
+
+lopt = labelOptions(noHide = TRUE,
+                    direction = 'top',
+                    textOnly = TRUE)
+                    
+leaflet(data = population2) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    ~longitude, ~latitude, radius=population2$ratio,clusterOptions = NULL,popup = ~County.Name, label = ~DHS.Service.Area, color= ~pal(Abuse.Type), stroke = FALSE, fillOpacity = 0.8
+   
+  )%>%
+   addLegend(pal= pal, values=~population2$Abuse.Type, opacity=8, title="Type of Abuse")
+
+
+```
+
+# Abuse Across the Years
+
+
+Below is a representation of how total abuse has varied from 2004-2017. It has peaked in 2017 because Dangerous Substance abuse only started being recorded in 2017. Iowa passed a law in 2017 that legalised medical marijuana use and while it is only offered to registered patients, this could be a cause of the increase in Dangerous Substance abuse and Presence of Illegal Drugs in child’s system might.
+
+```{r}
+child_abuse_hist<-child_abuse0%>%
+  group_by(Year)%>%
+  summarize(total_abuse=sum(Occurences))
+  ggplot(child_abuse_hist, aes(x = Year , y=total_abuse)) +
+  geom_col()+
+  labs(x = "Year", y="Total Abuse per Year", 
+       title = "Total Abuse in Iowa from 2004-2017")
+
+```
+
+
+
+# Policy Changes
+ Given the above information, we recommended the following policy changes for the State of Iowa:
+Increase education on child abuse; Increase the quality of service area 2. Increase the number of service areas as some of them encompass too many counties. Issue new laws that prevents underage children from obtaining dangerous substances. (This could mean raising legal drinking age) *
+## Conclusion
+ To date the financial cost of child abuse in the United States is a approximately $585 billion and we believe that millions could be saved afterwards by implementing the above policy changes today that would not cost this much.
+
+
+# References and Citations
+* [The Issue of Child Abuse](https://www.childhelp.org/child-abuse/), n.d.
+*[Effects of child abuse and neglect for adult survivors](https://aifs.gov.au/cfca/publications/effects-child-abuse-and-neglect-adult-survivor) , 2014, January. 
+*[Sad Legacy Of Abuse: The Search For Remedies]  (https://www.nytimes.com/1989/01/24/science/sad-legacy-of-abuse-the-search-for-remedies.html) , JAN. 24, 1989
+* [Medical Marijuana use in Iowa] (https://420intel.com/regional/iowa), Oct.01.2018
+* [United States Cencus Bureau(https://www.census.gov/quickfacts/iowacountyiowa) 
+
+

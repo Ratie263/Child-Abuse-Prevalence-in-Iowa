@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Group 4: Ratie Vushe and Jinghan Gao" />
+
+
+<title>More Information</title>
+
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Doubting Truths, Trusting Lies</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Blogpost</a>
+</li>
+<li>
+  <a href="more_info.html">More info</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">More Information</h1>
+<h4 class="author"><em>Group 4: Ratie Vushe and Jinghan Gao</em></h4>
+<h4 class="date"><em>Last updated on 2019-01-16</em></h4>
+
+</div>
+
+
+<style>
+body {
+text-align: justify}
+</style>
+<div id="types-of-abuse-across-states" class="section level1">
+<h1>Types of Abuse Across States</h1>
+<p>We eliminated Denial of Critical care from our observations and created an interactive map to show the second most prevalent types of abuse in each county. We also used a dataset with Iowa county population and joined it together with the Abuse dataset. The representation above shows the results with color of each circle showing the types of abuse and the radius showing average occurrence according to population. Hovering over each point shows us what county each type of abuse occurs in with the pop up being the county name. <div id="htmlwidget-e44273e29c5a4f9bed05" style="width:768px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e44273e29c5a4f9bed05">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[41.3307464,41.0289839,41.0289839,43.2842838,43.2842838,40.7431635,41.6845893,42.0801864,42.4700957,42.0365493,42.7745873,42.4707777,42.7354936,42.7315661,42.3851848,42.0362382,41.3314876,41.7723207,41.7723207,43.0815577,42.7356226,43.0600414,41.0290323,43.0825804,42.8447493,41.8980358,42.0372125,41.6848862,40.7476891,40.7476891,40.7476891,40.7376827,42.471211,40.9231829,43.3779848,43.3779848,42.468832,43.3780225,42.8625919,43.0599208,42.7325458,40.7455892,42.0362394,42.4018651,42.4018651,41.6837548,42.3837722,43.0818861,42.3838803,41.6828528,40.9879383,43.3567673,42.7764686,42.3868747,41.6863229,42.1717426,41.6860394,41.0317596,41.6715511,42.1212397,41.336465,43.20413,40.6419764,42.0789478,41.2185073,41.2185073,41.0293738,43.380497,41.3307142,41.3352035,41.3344515,42.0358499,41.0334523,43.3564124,42.0516663,41.0297826,41.0297826,41.03014,41.4839221,43.0837527,43.3785704,43.3785704,40.7391444,43.0820643,42.7378346,42.7341351,41.6855048,41.3366123,41.6864422,41.6864422,40.7352023,42.3862604,41.6370978,41.6850926,43.0826174,43.0826174,42.0362415,42.0798117,42.0798117,40.7374324,40.7374324,40.7374324,41.0277304,40.7532294,41.0305845,41.3343735,41.335591,40.7394702,42.4279662,43.3775678,43.2906746,42.3897169,43.3773984,42.7331189],[-94.4709413,-94.6991849,-94.6991849,-91.3780923,-91.3780923,-92.8686104,-94.9058222,-92.0656912,-92.3088197,-93.931671,-92.3180548,-91.8378392,-95.151149,-92.7901934,-94.6404136,-94.8605593,-94.9278266,-91.1324125,-91.1324125,-93.2608184,-95.6238055,-92.3176637,-93.7851579,-95.1509194,-91.3414328,-90.5319724,-95.3819678,-94.0397374,-92.4097173,-92.4097173,-92.4097173,-93.7862815,-91.3673502,-91.1814707,-95.1508301,-95.1508301,-90.8824564,-94.6784803,-91.8443207,-92.7890033,-93.262473,-95.6046765,-94.3968356,-92.7914177,-92.7914177,-94.501055,-93.7068085,-93.7342723,-93.2404025,-95.8169209,-91.5445241,-92.3171989,-94.2071868,-95.5134962,-92.065524,-90.5742294,-93.053765,-91.9488774,-91.5880849,-91.1314352,-92.1786426,-94.2067199,-91.479264,-91.5989646,-91.2596184,-91.2596184,-93.3277207,-96.2102924,-94.0155619,-92.6409094,-93.0994367,-92.9987706,-95.6213267,-92.7890315,-95.9599235,-92.8689877,-92.8689877,-95.1563758,-91.1127562,-95.6248784,-95.6236852,-95.6236852,-95.1501747,-94.6781371,-96.2140431,-94.6787466,-93.5735335,-95.5423935,-92.5314684,-92.5314684,-94.2439719,-95.1053946,-90.6232428,-95.3102113,-96.1778827,-96.1778827,-93.4650448,-92.5325425,-92.5325425,-94.6964148,-94.6964148,-94.6964148,-94.2423792,-91.9499871,-92.4094499,-93.5613594,-91.7178676,-93.3273639,-94.1817881,-93.7341955,-91.8437074,-96.0447673,-93.2608476,-93.7351465],[7.93875815140346,4.34074877916441,4.34074877916441,5.76202823393835,5.76202823393835,21.3730569948187,28.6841161706705,7.48771546681226,6.09130932995597,3.92689925993052,6.42286540082694,4.52787472879917,7.55842864246643,3.28632069012734,5.74594705520213,2.75590551181102,12.1719284899201,3.45143720002157,3.45143720002157,6.1386783239548,11.3114174620007,6.66389004581424,12.8013654789844,9.40012368583797,3.17514316493735,8.33865135077643,2.81425891181989,4.21849028486273,1.78451929511488,1.78451929511488,1.78451929511488,18.1132075471698,4.19751646942226,12.7863612147043,4.18628990057562,4.18628990057562,6.92490802856525,17.8117048346056,7.27419680743585,4.0650406504065,18.1031090121999,13.8169257340242,6.23538581449727,2.59466472066813,2.59466472066813,9.74695407685098,4.23420443268277,10.3982917092192,5.63115908024402,3.3955857385399,9.66621356290591,13.8708279150412,5.01882057716437,8.15731973780044,3.47761286716761,4.95714138180316,5.62679218741546,11.2908478992509,1.71570270089136,10.5181145305804,3.9397222495814,1.60010667377825,17.7285318559557,5.99692122347902,6.43776824034335,6.43776824034335,7.49941410827279,4.07055630936228,8.99269343658278,6.8360692601754,3.86648542516236,6.35424940428912,2.65463233342182,11.2877433919669,9.1533180778032,2.03951561504143,2.03951561504143,7.89188122718753,10.0746268656716,15.6510397797261,1.32340777502068,1.32340777502068,11.5606936416185,7.91904971403432,6.02696272799366,9.348524685948,3.80217089014798,11.0509069881995,2.62094572458229,2.62094572458229,7.94596742153357,2.44473871854945,6.95615880910561,3.43997248022016,5.27825588066552,5.27825588066552,3.36403355828598,4.22089342244108,4.22089342244108,2.58983489802525,2.58983489802525,2.58983489802525,6.42570281124498,7.82450747519911,7.07681771487273,4.30596256204772,5.38575467887438,6.17665225447807,7.21212949050676,6.04514971191083,2.3761199940597,14.6833416317644,6.42656312759406,11.2640801001252],null,null,{"interactive":true,"className":"","stroke":false,"color":["#000000","#000000","#F5002D","#F5002D","#E0DF11","#F5002D","#F5002D","#F5002D","#6B691A","#E0DF11","#F5002D","#6B691A","#F5002D","#E0DF11","#E0DF11","#6B691A","#000000","#F5002D","#E0DF11","#6B691A","#F5002D","#F5002D","#E0DF11","#F5002D","#F5002D","#F5002D","#E0DF11","#E0DF11","#F5002D","#E0DF11","#6B691A","#000000","#E0DF11","#F5002D","#F5002D","#6B691A","#6B691A","#F5002D","#F5002D","#E0DF11","#F5002D","#F5002D","#000000","#E0DF11","#F5002D","#F5002D","#F5002D","#F5002D","#000000","#000000","#E0DF11","#F5002D","#F5002D","#E0DF11","#6B691A","#6B691A","#F5002D","#F5002D","#E0DF11","#F5002D","#E0DF11","#E0DF11","#F5002D","#6B691A","#F5002D","#6B691A","#F5002D","#F5002D","#F5002D","#E0DF11","#E0DF11","#E0DF11","#6B691A","#000000","#F5002D","#000000","#E0DF11","#F5002D","#F5002D","#F5002D","#000000","#6B691A","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D","#E0DF11","#F5002D","#000000","#000000","#6B691A","#000000","#E0DF11","#000000","#E0DF11","#6B691A","#F5002D","#0000FF","#E0DF11","#6B691A","#E0DF11","#E0DF11","#F5002D","#E0DF11","#F5002D","#0000FF","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#000000","#000000","#F5002D","#F5002D","#E0DF11","#F5002D","#F5002D","#F5002D","#6B691A","#E0DF11","#F5002D","#6B691A","#F5002D","#E0DF11","#E0DF11","#6B691A","#000000","#F5002D","#E0DF11","#6B691A","#F5002D","#F5002D","#E0DF11","#F5002D","#F5002D","#F5002D","#E0DF11","#E0DF11","#F5002D","#E0DF11","#6B691A","#000000","#E0DF11","#F5002D","#F5002D","#6B691A","#6B691A","#F5002D","#F5002D","#E0DF11","#F5002D","#F5002D","#000000","#E0DF11","#F5002D","#F5002D","#F5002D","#F5002D","#000000","#000000","#E0DF11","#F5002D","#F5002D","#E0DF11","#6B691A","#6B691A","#F5002D","#F5002D","#E0DF11","#F5002D","#E0DF11","#E0DF11","#F5002D","#6B691A","#F5002D","#6B691A","#F5002D","#F5002D","#F5002D","#E0DF11","#E0DF11","#E0DF11","#6B691A","#000000","#F5002D","#000000","#E0DF11","#F5002D","#F5002D","#F5002D","#000000","#6B691A","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D","#E0DF11","#F5002D","#000000","#000000","#6B691A","#000000","#E0DF11","#000000","#E0DF11","#6B691A","#F5002D","#0000FF","#E0DF11","#6B691A","#E0DF11","#E0DF11","#F5002D","#E0DF11","#F5002D","#0000FF","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D","#F5002D"],"fillOpacity":0.8},null,null,["Adair","Adams","Adams","Allamakee","Allamakee","Appanoose","Audubon","Benton","Black Hawk","Boone","Bremer","Buchanan","Buena Vista","Butler","Calhoun","Carroll","Cass","Cedar","Cedar","Cerro Gordo","Cherokee","Chickasaw","Clarke","Clay","Clayton","Clinton","Crawford","Dallas","Davis","Davis","Davis","Decatur","Delaware","Des Moines","Dickinson","Dickinson","Dubuque","Emmet","Fayette","Floyd","Franklin","Fremont","Greene","Grundy","Grundy","Guthrie","Hamilton","Hancock","Hardin","Harrison","Henry","Howard","Humboldt","Ida","Iowa","Jackson","Jasper","Jefferson","Johnson","Jones","Keokuk","Kossuth","Lee","Linn","Louisa","Louisa","Lucas","Lyon","Madison","Mahaska","Marion","Marshall","Mills","Mitchell","Monona","Monroe","Monroe","Montgomery","Muscatine","OBrien","Osceola","Osceola","Page","Palo Alto","Plymouth","Pocahontas","Polk","Pottawattamie","Poweshiek","Poweshiek","Ringgold","Sac","Scott","Shelby","Sioux","Sioux","Story","Tama","Tama","Taylor","Taylor","Taylor","Union","Van Buren","Wapello","Warren","Washington","Wayne","Webster","Winnebago","Winneshiek","Woodbury","Worth","Wright"],null,["5-Des Moines  ","5-Des Moines  ","5-Des Moines  ","2-Northern    ","2-Northern    ","4-Cedar Rapids","1-Western     ","4-Cedar Rapids","2-Northern    ","5-Des Moines  ","2-Northern    ","2-Northern    ","1-Western     ","2-Northern    ","2-Northern    ","1-Western     ","1-Western     ","3-Eastern     ","3-Eastern     ","2-Northern    ","1-Western     ","2-Northern    ","5-Des Moines  ","1-Western     ","2-Northern    ","3-Eastern     ","1-Western     ","5-Des Moines  ","4-Cedar Rapids","4-Cedar Rapids","4-Cedar Rapids","5-Des Moines  ","2-Northern    ","3-Eastern     ","1-Western     ","1-Western     ","3-Eastern     ","1-Western     ","2-Northern    ","2-Northern    ","2-Northern    ","1-Western     ","1-Western     ","2-Northern    ","2-Northern    ","1-Western     ","2-Northern    ","2-Northern    ","2-Northern    ","1-Western     ","3-Eastern     ","2-Northern    ","2-Northern    ","1-Western     ","4-Cedar Rapids","3-Eastern     ","4-Cedar Rapids","4-Cedar Rapids","4-Cedar Rapids","4-Cedar Rapids","4-Cedar Rapids","1-Western     ","3-Eastern     ","4-Cedar Rapids","3-Eastern     ","3-Eastern     ","5-Des Moines  ","1-Western     ","5-Des Moines  ","4-Cedar Rapids","5-Des Moines  ","2-Northern    ","1-Western     ","2-Northern    ","1-Western     ","4-Cedar Rapids","4-Cedar Rapids","1-Western     ","3-Eastern     ","1-Western     ","1-Western     ","1-Western     ","1-Western     ","1-Western     ","1-Western     ","2-Northern    ","5-Des Moines  ","1-Western     ","4-Cedar Rapids","4-Cedar Rapids","5-Des Moines  ","1-Western     ","3-Eastern     ","1-Western     ","1-Western     ","1-Western     ","5-Des Moines  ","4-Cedar Rapids","4-Cedar Rapids","1-Western     ","1-Western     ","1-Western     ","5-Des Moines  ","4-Cedar Rapids","4-Cedar Rapids","5-Des Moines  ","4-Cedar Rapids","5-Des Moines  ","2-Northern    ","2-Northern    ","2-Northern    ","1-Western     ","2-Northern    ","2-Northern    "],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#0000FF","#F5002D","#E0DF11","#6B691A","#000000"],"labels":["Allows Access by Registered Sex Offender","Dangerous Substance","Physical Abuse","Presence of Illegal Drugs in Child's System (PID)","Sexual Abuse"],"na_color":null,"na_label":"NA","opacity":8,"position":"topright","type":"factor","title":"Type of Abuse","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[40.6419764,43.380497],"lng":[-96.2140431,-90.5319724]}},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="abuse-across-the-years" class="section level1">
+<h1>Abuse Across the Years</h1>
+<p>Below is a representation of how total abuse has varied from 2004-2017. It has peaked in 2017 because Dangerous Substance abuse only started being recorded in 2017. Iowa passed a law in 2017 that legalised medical marijuana use and while it is only offered to registered patients, this could be a cause of the increase in Dangerous Substance abuse and Presence of Illegal Drugs in child’s system might.</p>
+<p><img src="more_info_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+</div>
+<div id="policy-changes" class="section level1">
+<h1>Policy Changes</h1>
+<p>Given the above information, we recommended the following policy changes for the State of Iowa: Increase education on child abuse; Increase the quality of service area 2. Increase the number of service areas as some of them encompass too many counties. Issue new laws that prevents underage children from obtaining dangerous substances. (This could mean raising legal drinking age) * ## Conclusion To date the financial cost of child abuse in the United States is a approximately $585 billion and we believe that millions could be saved afterwards by implementing the above policy changes today that would not cost this much.</p>
+</div>
+<div id="references-and-citations" class="section level1">
+<h1>References and Citations</h1>
+<ul>
+<li><a href="https://www.childhelp.org/child-abuse/">The Issue of Child Abuse</a>, n.d. <em><a href="https://aifs.gov.au/cfca/publications/effects-child-abuse-and-neglect-adult-survivor">Effects of child abuse and neglect for adult survivors</a> , 2014, January. </em>[Sad Legacy Of Abuse: The Search For Remedies] (<a href="https://www.nytimes.com/1989/01/24/science/sad-legacy-of-abuse-the-search-for-remedies.html" class="uri">https://www.nytimes.com/1989/01/24/science/sad-legacy-of-abuse-the-search-for-remedies.html</a>) , JAN. 24, 1989</li>
+<li>[Medical Marijuana use in Iowa] (<a href="https://420intel.com/regional/iowa" class="uri">https://420intel.com/regional/iowa</a>), Oct.01.2018</li>
+<li>[United States Cencus Bureau(<a href="https://www.census.gov/quickfacts/iowacountyiowa" class="uri">https://www.census.gov/quickfacts/iowacountyiowa</a>)</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

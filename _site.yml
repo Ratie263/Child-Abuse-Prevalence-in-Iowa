@@ -14,7 +14,7 @@ output:
     self_contained: no
 # All fa icons were obtained from https://fontawesome.com/icons?d=gallery
 navbar:
-  title: "Doubting Truths, Trusting Lies"
+  title: "Child Abuse in Iowa"
   left:
     - text: "Blogpost"
       href: index.html

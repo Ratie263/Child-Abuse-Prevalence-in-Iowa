@@ -1,5 +1,5 @@
 ---
-title: "Stopping Tomorrow's Abuser by Protecing Today's Abusee"
+title: "Child Abuse in Iowa: Stopping Tomorrow's Abuser by Protecing Today's Abusee"
 author: "Group 4: Ratie Vushe and Jinghan Gao"
 date: "Last updated on `r Sys.Date()`"
 output: 
